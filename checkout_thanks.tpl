@@ -47,7 +47,8 @@ Payment Type = $placed.info.billing.payment_method
 Currency Type = $placed.info.currency_type
 **************************************************}
 
-<!-- Google tag (gtag.js) - Google Ads: 123456789 -->
+{if isset($placed.order.id) && !isset($placed.info.amazon_order_ids)}
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-1064132375"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -56,7 +57,6 @@ Currency Type = $placed.info.currency_type
     gtag('config', 'AW-1064132375');
 </script>
 
-<!-- Event snippet for Example conversion page -->
   <script>
     gtag('event', 'conversion', {'send_to': 'AW-1064132375/kTcECOv8r_MBEJe-tfsD',
       'value': $placed.totals.grandtotal,
@@ -64,6 +64,7 @@ Currency Type = $placed.info.currency_type
       'currency': 'USD'
     });
   </script>
+{/if}
 
 {if isset($placed.info.amazon_order_ids) || isset($placed.order.id) && !isset($placed.info.amazon_order_ids)}
 
